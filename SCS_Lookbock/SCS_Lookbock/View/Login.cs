@@ -24,7 +24,6 @@ namespace SCS_Lookbock.View
         {
             if(logbock.Login(tb_user.Text, tb_password.Text))
             {
-                Close();
             }
         }
     }

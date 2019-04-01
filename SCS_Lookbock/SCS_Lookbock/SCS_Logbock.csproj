@@ -56,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logbock.cs" />
+    <Compile Include="View\LiveView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LiveView.Designer.cs">
+      <DependentUpon>LiveView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
     </Compile>

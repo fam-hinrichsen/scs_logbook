@@ -36,11 +36,18 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel_DB = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_user = new System.Windows.Forms.ToolStripStatusLabel();
+            this.liveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel_DB,
+            this.toolStripStatusLabel_user});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(800, 22);
@@ -87,9 +94,12 @@
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.liveToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
@@ -100,6 +110,25 @@
             this.loginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
+            // 
+            // toolStripStatusLabel_DB
+            // 
+            this.toolStripStatusLabel_DB.Name = "toolStripStatusLabel_DB";
+            this.toolStripStatusLabel_DB.Size = new System.Drawing.Size(132, 17);
+            this.toolStripStatusLabel_DB.Text = "toolStripStatusLabel_DB";
+            // 
+            // toolStripStatusLabel_user
+            // 
+            this.toolStripStatusLabel_user.Name = "toolStripStatusLabel_user";
+            this.toolStripStatusLabel_user.Size = new System.Drawing.Size(139, 17);
+            this.toolStripStatusLabel_user.Text = "toolStripStatusLabel_user";
+            // 
+            // liveToolStripMenuItem
+            // 
+            this.liveToolStripMenuItem.Name = "liveToolStripMenuItem";
+            this.liveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.liveToolStripMenuItem.Text = "Live";
+            this.liveToolStripMenuItem.Click += new System.EventHandler(this.liveToolStripMenuItem_Click);
             // 
             // MainView
             // 
@@ -112,6 +141,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainView";
             this.Text = "Lookbock";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -129,6 +161,9 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_DB;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_user;
+        private System.Windows.Forms.ToolStripMenuItem liveToolStripMenuItem;
     }
 }
 
