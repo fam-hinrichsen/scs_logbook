@@ -10,12 +10,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock.View
+namespace SCS_Lookbock.View.Management
 {
     public partial class NewUserView : Form
     {
-        public NewUserView(Logbook logbook)
+        private readonly Form parent;
+
+        public NewUserView()
         {
+            InitializeComponent();
+        }
+
+        public NewUserView(Form parent)
+        {
+            this.parent = parent;
             InitializeComponent();
         }
 
@@ -57,6 +65,14 @@ namespace SCS_Lookbock.View
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Logbook.Instance.closeView(GetType());
+        }
+
+        private void NewUserView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(parent != null)
+            {
+                parent.Enabled = true;
+            }
         }
     }
 }

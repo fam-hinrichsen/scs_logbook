@@ -1,6 +1,7 @@
 ﻿using SCS_Lookbock.MySql;
 using SCS_Lookbock.Objects;
 using SCS_Lookbock.View;
+using SCS_Lookbock.View.Management;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,8 @@ namespace SCS_Lookbock
 
         public void Dispose()
         {
+            Logout();
+
             MySqlConnector.Instance.Dispose();
 
             while (views.Count > 0)
@@ -61,7 +64,6 @@ namespace SCS_Lookbock
             { 
                 login = new Login(this);
                 AddView(login);
-                login.MdiParent = getView(typeof(MainView));
             }
 
             login.Show();
@@ -79,12 +81,24 @@ namespace SCS_Lookbock
 
             if (newUser == null)
             {
-                newUser = new NewUserView(this);
+                newUser = new NewUserView();
                 AddView(newUser);
-                newUser.MdiParent = getView(typeof(MainView));
             }
 
             newUser.Show();
+        }
+
+        public void ListUser()
+        {
+            UsersView users = (UsersView)getView(typeof(UsersView));
+
+            if (users == null)
+            {
+                users = new UsersView();
+                AddView(users);
+            }
+
+            users.Show();
         }
 
         public bool Login(string username, string password)
@@ -125,6 +139,11 @@ namespace SCS_Lookbock
             }
 
             views.Add(view.GetType(), view);
+            if (!view.GetType().Equals(typeof(MainView)))
+            {
+                view.MdiParent = getView(typeof(MainView));
+            }
+
             return true;
         }
 

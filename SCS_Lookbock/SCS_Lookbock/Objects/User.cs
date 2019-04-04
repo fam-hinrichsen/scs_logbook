@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SCS_Lookbock.Objects
@@ -13,5 +14,12 @@ namespace SCS_Lookbock.Objects
         public string Username { get;set; }
         [Column("password")]
         public string Password { get;set;}
+        [InverseProperty("Owner")]
+        public List<Job> Jobs { get;set;}
+
+        public User()
+        {
+            Jobs = new List<Job>();
+        }
     }
 }

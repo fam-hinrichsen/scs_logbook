@@ -1,4 +1,4 @@
-﻿namespace SCS_Lookbock.View
+﻿namespace SCS_Lookbock.View.Management
 {
     partial class NewUserView
     {
@@ -83,7 +83,7 @@
             // btn_cancel
             // 
             this.btn_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_cancel.Location = new System.Drawing.Point(93, 58);
+            this.btn_cancel.Location = new System.Drawing.Point(101, 58);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 5;
@@ -93,10 +93,12 @@
             // 
             // NewUserView
             // 
+            this.AcceptButton = this.btn_create;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_cancel;
             this.ClientSize = new System.Drawing.Size(185, 90);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_create);
             this.Controls.Add(this.tb_username);
@@ -107,6 +109,7 @@
             this.MinimizeBox = false;
             this.Name = "NewUserView";
             this.Text = "New User";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewUserView_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
