@@ -54,15 +54,15 @@ namespace SCS_Lookbock.View
             e.Cancel = true;
             Logbook.Instance.Dispose();
         }
-        
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Logbook.Instance.NewUser();
-        }
 
-        private void listToolStripMenuItem_Click(object sender, EventArgs e)
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Logbook.Instance.ListUser();
+        }
+
+        private void jobToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Logbook.Instance.ListJob();
         }
     }
 }

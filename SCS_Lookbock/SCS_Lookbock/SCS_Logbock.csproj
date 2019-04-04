@@ -93,6 +93,11 @@
     <Compile Include="MySql\MySqlConnector.cs" />
     <Compile Include="Objects\Job.cs" />
     <Compile Include="Objects\User.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="View\LiveView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,23 +118,43 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Management\EditUserView.cs">
+    <Compile Include="View\Management\IAddView.cs" />
+    <Compile Include="View\Management\IEditView.cs" />
+    <Compile Include="View\Management\Jobmanagement\EditJobView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Management\EditUserView.Designer.cs">
+    <Compile Include="View\Management\Jobmanagement\EditJobView.Designer.cs">
+      <DependentUpon>EditJobView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Management\Jobmanagement\JobListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Management\Jobmanagement\NewJobView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Management\Jobmanagement\NewJobView.Designer.cs">
+      <DependentUpon>NewJobView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Management\ListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Management\ListView.Designer.cs">
+      <DependentUpon>ListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Management\Usermanagement\EditUserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Management\Usermanagement\EditUserView.Designer.cs">
       <DependentUpon>EditUserView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Management\NewUserView.cs">
+    <Compile Include="View\Management\Usermanagement\NewUserView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Management\NewUserView.Designer.cs">
+    <Compile Include="View\Management\Usermanagement\NewUserView.Designer.cs">
       <DependentUpon>NewUserView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Management\UsersView.cs">
+    <Compile Include="View\Management\Usermanagement\UserListView.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Management\UsersView.Designer.cs">
-      <DependentUpon>UsersView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -139,21 +164,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="View\Management\EditUserView.resx">
+    <EmbeddedResource Include="View\Management\ListView.resx">
+      <DependentUpon>ListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Management\Usermanagement\EditUserView.resx">
       <DependentUpon>EditUserView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Management\NewUserView.resx">
+    <EmbeddedResource Include="View\Management\Usermanagement\NewUserView.resx">
       <DependentUpon>NewUserView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Management\UsersView.resx">
-      <DependentUpon>UsersView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -181,6 +202,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

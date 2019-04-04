@@ -1,6 +1,6 @@
 ﻿namespace SCS_Lookbock.View.Management
 {
-    partial class UsersView
+    partial class ListView<T>
     {
         /// <summary>
         /// Required designer variable.
@@ -30,9 +30,9 @@
         {
             this.dg_Users = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dg_Users)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +63,13 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -77,14 +84,7 @@
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.addToolStripMenuItem.Text = "Add";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
-            // 
-            // UsersView
+            // ListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,8 +93,8 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimizeBox = false;
-            this.Name = "UsersView";
-            this.Text = "Users";
+            this.Name = "ListView";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UsersView_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dg_Users)).EndInit();
             this.menuStrip1.ResumeLayout(false);

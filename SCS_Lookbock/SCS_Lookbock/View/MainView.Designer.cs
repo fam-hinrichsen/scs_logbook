@@ -41,8 +41,7 @@
             this.liveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usermanagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jobToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -97,27 +96,27 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(144, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -139,33 +138,25 @@
             // usermanagementToolStripMenuItem
             // 
             this.usermanagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userToolStripMenuItem});
+            this.userToolStripMenuItem,
+            this.jobToolStripMenuItem});
             this.usermanagementToolStripMenuItem.Name = "usermanagementToolStripMenuItem";
             this.usermanagementToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.usermanagementToolStripMenuItem.Text = "Management";
             // 
             // userToolStripMenuItem
             // 
-            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.listToolStripMenuItem});
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.userToolStripMenuItem.Text = "User";
+            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
-            // newToolStripMenuItem
+            // jobToolStripMenuItem
             // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // listToolStripMenuItem
-            // 
-            this.listToolStripMenuItem.Name = "listToolStripMenuItem";
-            this.listToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listToolStripMenuItem.Text = "List";
-            this.listToolStripMenuItem.Click += new System.EventHandler(this.listToolStripMenuItem_Click);
+            this.jobToolStripMenuItem.Name = "jobToolStripMenuItem";
+            this.jobToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jobToolStripMenuItem.Text = "Job";
+            this.jobToolStripMenuItem.Click += new System.EventHandler(this.jobToolStripMenuItem_Click);
             // 
             // MainView
             // 
@@ -203,8 +194,7 @@
         private System.Windows.Forms.ToolStripMenuItem liveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usermanagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem listToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jobToolStripMenuItem;
     }
 }
 

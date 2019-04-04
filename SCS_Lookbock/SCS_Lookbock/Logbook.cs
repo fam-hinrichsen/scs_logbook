@@ -1,7 +1,8 @@
 ﻿using SCS_Lookbock.MySql;
 using SCS_Lookbock.Objects;
 using SCS_Lookbock.View;
-using SCS_Lookbock.View.Management;
+using SCS_Lookbock.View.Management.Jobmanagement;
+using SCS_Lookbock.View.Management.Usermanagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,15 +91,28 @@ namespace SCS_Lookbock
 
         public void ListUser()
         {
-            UsersView users = (UsersView)getView(typeof(UsersView));
+            UserListView users = (UserListView)getView(typeof(UserListView));
 
             if (users == null)
             {
-                users = new UsersView();
+                users = new UserListView(MySqlConnector.Instance.GetDbContext().Users, typeof(EditUserView), typeof(NewUserView));
                 AddView(users);
             }
 
             users.Show();
+        }
+
+        public void ListJob()
+        {
+            JobListView jobs = (JobListView)getView(typeof(JobListView));
+
+            if (jobs == null)
+            {
+                jobs = new JobListView(MySqlConnector.Instance.GetDbContext().Jobs, typeof(EditJobView), typeof(NewJobView));
+                AddView(jobs);
+            }
+
+            jobs.Show();
         }
 
         public bool Login(string username, string password)

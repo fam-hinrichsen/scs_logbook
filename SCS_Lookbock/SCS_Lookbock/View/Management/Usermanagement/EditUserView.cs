@@ -1,31 +1,21 @@
 ﻿using SCS_Lookbock.MySql;
 using SCS_Lookbock.Objects;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock.View.Management
+namespace SCS_Lookbock.View.Management.Usermanagement
 {
-    public partial class EditUserView : Form
+    public partial class EditUserView : Form, IEditView<User>
     {
-        private readonly User user;
-        private readonly Form parent;
+        private User user;
+        private Form parent;
 
-        public EditUserView(User user, Form parent)
+        public EditUserView()
         {
-            this.user = user;
-            this.parent = parent;
-
             InitializeComponent();
-            tb_id.Text = user.Id.ToString();
-            tb_username.Text = user.Username;
-            tb_password.Text = user.Password;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,6 +47,20 @@ namespace SCS_Lookbock.View.Management
                 tb_username.BackColor = Color.Red;
                 btn_save.Enabled = false;
             }
+        }
+
+        public void SetEdit(User toEdit)
+        {
+            user = toEdit;
+
+            tb_id.Text = user.Id.ToString();
+            tb_username.Text = user.Username;
+            tb_password.Text = user.Password;
+        }
+
+        public void SetParent(Form form)
+        {
+            parent = form;
         }
     }
 }

@@ -1,29 +1,19 @@
 ﻿using SCS_Lookbock.MySql;
 using SCS_Lookbock.Objects;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock.View.Management
+namespace SCS_Lookbock.View.Management.Usermanagement
 {
-    public partial class NewUserView : Form
+    public partial class NewUserView : Form, IAddView<User>
     {
-        private readonly Form parent;
+        private Form parent;
 
         public NewUserView()
         {
-            InitializeComponent();
-        }
-
-        public NewUserView(Form parent)
-        {
-            this.parent = parent;
             InitializeComponent();
         }
 
@@ -73,6 +63,11 @@ namespace SCS_Lookbock.View.Management
             {
                 parent.Enabled = true;
             }
+        }
+
+        public void SetParent(Form form)
+        {
+            parent = form;
         }
     }
 }

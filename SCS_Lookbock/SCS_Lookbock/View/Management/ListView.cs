@@ -6,27 +6,38 @@ using System.Windows.Forms;
 
 namespace SCS_Lookbock.View.Management
 {
-    public partial class UsersView : Form
+    public partial class ListView<T> : Form where T : class
     {
         private bool closing;
-        public UsersView()
+        private Type add;
+        private Type edit;
+
+        public ListView(DbSet<T> list, Type edit, Type add)
         {
-            InitializeComponent(); 
-            
-            MySqlConnector.Instance.GetDbContext().Users.Load();
-            dg_Users.DataSource = MySqlConnector.Instance.GetDbContext().Users.Local.ToBindingList();
-            dg_Users.Columns["Password"].Visible = false;
+            InitializeComponent();
+
+            this.add = add;
+            this.edit = edit;
+            list.Load();
+            dg_Users.DataSource = list.Local.ToBindingList();
+            //dg_Users.Columns["Password"].Visible = false;
             //dg_Users.Columns["Jobs"].Visible = false;
             dg_Users.Refresh();
         }
-        
+
+        public ListView()
+        {
+        }
+
         private void dg_Users_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             MySqlConnector.Instance.BeginTransaction();
-            EditUserView editUser = new EditUserView((User)dg_Users.Rows[e.RowIndex].DataBoundItem, this);
-            Logbook.Instance.AddView(editUser);
+            IEditView<T> editor = (IEditView<T>)Activator.CreateInstance(edit);
+            editor.SetEdit((T)dg_Users.Rows[e.RowIndex].DataBoundItem);
+            editor.SetParent(this);
+            Logbook.Instance.AddView((Form)editor);
             Enabled = false;
-            editUser.Show();
+            ((Form)editor).Show();
         }
 
         private void UsersView_FormClosing(object sender, FormClosingEventArgs e)
@@ -44,10 +55,12 @@ namespace SCS_Lookbock.View.Management
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MySqlConnector.Instance.BeginTransaction();
-            EditUserView editUser = new EditUserView((User)dg_Users.Rows[dg_Users.SelectedCells[0].RowIndex].DataBoundItem, this);
-            Logbook.Instance.AddView(editUser);
+            IEditView<T> editor = (IEditView<T>)Activator.CreateInstance(edit);
+            editor.SetEdit((T)dg_Users.Rows[dg_Users.SelectedCells[0].RowIndex].DataBoundItem);
+            editor.SetParent(this);
+            Logbook.Instance.AddView((Form)editor);
             Enabled = false;
-            editUser.Show();
+            ((Form)editor).Show();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -73,10 +86,11 @@ namespace SCS_Lookbock.View.Management
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NewUserView view = new NewUserView(this);
-            Logbook.Instance.AddView(view); 
+            IAddView<T> adder = (IAddView<T>)Activator.CreateInstance(add);
+            adder.SetParent(this);
+            Logbook.Instance.AddView((Form)adder);
             Enabled = false;
-            view.Show();
+            ((Form)adder).Show();
         }
     }
 }
