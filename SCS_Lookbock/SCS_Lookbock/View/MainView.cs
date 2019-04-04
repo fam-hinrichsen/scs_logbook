@@ -12,33 +12,37 @@ namespace SCS_Lookbock.View
 {
     public partial class MainView : Form
     {
-        Logbock logbock;
         bool closing;
 
         public MainView()
         {
             InitializeComponent();
-            logbock = new Logbock(this);
+            Logbook.Instance.AddView(this);
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            logbock.Logout();
+            Logbook.Instance.Logout();
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            logbock.Login();
+            Logbook.Instance.Login();
         }
 
         public void updateUser(string username)
         {
-            toolStripStatusLabel_user.Text = username;
+            toolStripStatusLabel_user.Text = "User: " + username;
+        }
+
+        public void UpdateDbConnectionState(string state)
+        {
+            toolStripStatusLabel_DB.Text = "DB: " + state;
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            logbock.Dispose();
+            Logbook.Instance.Dispose();
         }
 
         private void liveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -54,7 +58,12 @@ namespace SCS_Lookbock.View
             }
 
             closing = true;
-            logbock.Dispose();
+            Logbook.Instance.Dispose();
+        }
+
+        private void newUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Logbook.Instance.NewUser();
         }
     }
 }

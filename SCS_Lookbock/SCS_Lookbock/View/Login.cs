@@ -12,9 +12,9 @@ namespace SCS_Lookbock.View
 {
     public partial class Login : Form
     {
-        readonly Logbock logbock;
+        readonly Logbook logbock;
 
-        public Login(Logbock logbock)
+        public Login(Logbook logbock)
         {
             InitializeComponent();
             this.logbock = logbock;
@@ -22,9 +22,15 @@ namespace SCS_Lookbock.View
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            if(logbock.Login(tb_user.Text, tb_password.Text))
+            if(!logbock.Login(tb_user.Text, tb_password.Text))
             {
+                MessageBox.Show("Login failed","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            Logbook.Instance.closeView(GetType());
         }
     }
 }
