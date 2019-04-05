@@ -10,6 +10,12 @@ namespace SCS_Lookbock.View.Management.Jobmanagement
         {
             list.Include("Owner").Load();
             dg_Data.Columns["OwnerForeignKey"].Visible = false;
+            dg_Data.Columns["CityDestinationForeignKey"].Visible = false;
+            dg_Data.Columns["CitySourceForeignKey"].Visible = false;
+            dg_Data.Columns["CompanyDestinationForeignKey"].Visible = false;
+            dg_Data.Columns["CompanySourceForeignKey"].Visible = false;
+            dg_Data.Columns["CargoForeignKey"].Visible = false;
+
             Text = "Job";
         }
     }

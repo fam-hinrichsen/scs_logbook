@@ -65,23 +65,25 @@ namespace SCS_Lookbock.View.Management
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            throw new NotImplementedException();
+            /*
             MySqlConnector.Instance.BeginTransaction();
-            User user = (User)dg_Data.Rows[dg_Data.SelectedCells[0].RowIndex].DataBoundItem;
+            T user = (T)dg_Data.Rows[dg_Data.SelectedCells[0].RowIndex].DataBoundItem;
 
             DialogResult result = MessageBox.Show(
-                "Do you really want to delete user: " + user.Username,
+                "Do you really want to delete object: " + T.ToString(),
                 "Question",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
-            if(result == DialogResult.Yes) {
-                MySqlConnector.Instance.GetDbContext().Users.Remove(user);
+            if (result == DialogResult.Yes) {
+                MySqlConnector.Instance.GetDbContext().Users.Remove(T);
                 MySqlConnector.Instance.GetDbContext().SaveChanges();
                 MySqlConnector.Instance.EndTransaction();
             }
             else
             {
                 MySqlConnector.Instance.RollbackTransaction();
-            }
+            }*/
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)

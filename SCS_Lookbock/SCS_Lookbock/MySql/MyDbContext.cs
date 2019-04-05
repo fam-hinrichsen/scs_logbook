@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using MySql.Data.Entity;
 using SCS_Lookbock.Objects;
+using SCS_Lookbock.Objects.Constants;
 
 namespace SCS_Lookbock.MySql
 {
@@ -10,6 +11,9 @@ namespace SCS_Lookbock.MySql
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<Cargo> Cargos { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         public MyDbContext():base("MyContext")
         {

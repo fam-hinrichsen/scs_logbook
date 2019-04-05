@@ -1,9 +1,12 @@
 ﻿using log4net;
 using SCS_Lookbock.MySql;
 using SCS_Lookbock.Objects;
+using SCS_Lookbock.Objects.Constants;
 using SCS_Lookbock.View;
 using SCS_Lookbock.View.Management.Jobmanagement;
 using SCS_Lookbock.View.Management.Usermanagement;
+using SCSSdkClient;
+using SCSSdkClient.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +20,14 @@ namespace SCS_Lookbock
 
         private static Logbook instance = null;
         private static readonly object padlock = new object();
+        private readonly object telemetryDataLock = new object();
 
-        Dictionary<Type, Form> views = new Dictionary<Type, Form>();
-        User activeUser = null;
-        
+        private readonly Dictionary<Type, Form> views = new Dictionary<Type, Form>();
+        private User activeUser = null;
+        private SCSSdkTelemetry telemetry;
+        private SCSTelemetry telemetryData;
+        private Job activeJob;
+
         public static Logbook Instance
         {
             get
@@ -44,6 +51,7 @@ namespace SCS_Lookbock
 
         public void Dispose()
         {
+            UnloadScsSdkClient();
             Logout();
 
             MySqlConnector.Instance.Dispose();
@@ -129,6 +137,7 @@ namespace SCS_Lookbock
                     mainView.updateUser(username);
                     closeView(login.GetType());
                     activeUser = tmpUser;
+                    InitScsSdkClient();
                     return true;
                 }
             }
@@ -142,6 +151,7 @@ namespace SCS_Lookbock
 
         public bool Logout()
         {
+            UnloadScsSdkClient();
             ((MainView)getView(typeof(MainView))).updateUser(string.Empty);
             activeUser = null;
             return true;
@@ -165,8 +175,7 @@ namespace SCS_Lookbock
 
         public bool closeView(Type name)
         {
-            Form view;
-            if(views.TryGetValue(name,out view))
+            if (views.TryGetValue(name, out Form view))
             {
                 view.Close();
                 views.Remove(name);
@@ -185,5 +194,176 @@ namespace SCS_Lookbock
 
             return views[name];
         }
+
+        private bool InitScsSdkClient()
+        {
+            try
+            {
+                telemetry = new SCSSdkTelemetry();
+                telemetry.Data += Telemetry_Data;
+                telemetry.JobFinished += Telemetry_JobFinished;
+                telemetry.JobStarted += Telemetry_JobStarted;
+                //telemetry.TrailerConnected += TelemetryTrailerConnected;
+                //telemetry.TrailerDisconnected += TelemetryTrailerDisconnected;
+                return true;
+            }
+            catch(Exception ex)
+            {
+                log.Fatal("Cannot initialize SCS SDK client.", ex);
+            }
+
+            return false;
+        }
+
+        private bool UnloadScsSdkClient()
+        {
+            try
+            {
+                telemetry.Data -= Telemetry_Data;
+                telemetry.JobFinished -= Telemetry_JobFinished;
+                telemetry.JobStarted -= Telemetry_JobStarted;
+                telemetry.Dispose();
+                telemetry = null;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                log.Fatal("Cannot unload SCS SDK client.", ex);
+            }
+
+            return false;
+        }
+
+        private void Telemetry_Data(SCSTelemetry data, bool newTimestamp)
+        {
+            lock (telemetryDataLock)
+            {
+                telemetryData = data;
+                if(activeJob != null && activeJob.Distance == 0)
+                {
+                    MySqlConnector.Instance.BeginTransaction();
+                    activeJob.Distance = data.NavigationValues.NavigationDistance;
+                    MySqlConnector.Instance.GetDbContext().SaveChanges();
+                    MySqlConnector.Instance.EndTransaction();
+                }
+            }
+        }
+
+        private void Telemetry_JobFinished(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnector.Instance.BeginTransaction();
+                activeJob.IsActive = false;
+                MySqlConnector.Instance.GetDbContext().SaveChanges();
+                MySqlConnector.Instance.EndTransaction();
+            }
+            catch(Exception ex)
+            {
+                log.Error("Could not finish job from SDK.", ex);
+                MySqlConnector.Instance.RollbackTransaction();
+            }
+        }
+
+        private void Telemetry_JobStarted(object sender, EventArgs e)
+        {
+            lock (telemetryDataLock)
+            {
+                try
+                {
+                    MySqlConnector.Instance.BeginTransaction();
+
+                    activeJob = MySqlConnector.Instance.GetDbContext().Jobs.Where(j => j.OwnerForeignKey == activeUser.Id && j.IsActive == true).FirstOrDefault();
+                    
+                    string cargoName = telemetryData.JobValues.CargoValues.Id;
+                    Cargo cargo = MySqlConnector.Instance.GetDbContext().Cargos.Where(c => c.Name == cargoName).FirstOrDefault();
+                    if (cargo == null)
+                    {
+                        cargo = new Cargo
+                        {
+                            Name = cargoName,
+                            NameLocal = telemetryData.JobValues.CargoValues.Name
+                        };
+                        MySqlConnector.Instance.GetDbContext().Cargos.Add(cargo);
+                    }
+
+                    string citySourceName = telemetryData.JobValues.CitySourceId;
+                    City citySource = MySqlConnector.Instance.GetDbContext().Cities.Where(c => c.Name == citySourceName).FirstOrDefault();
+                    if (citySource == null)
+                    {
+                        citySource = new City
+                        {
+                            Name = citySourceName,
+                            NameLocal = telemetryData.JobValues.CitySource
+                        };
+                        MySqlConnector.Instance.GetDbContext().Cities.Add(citySource);
+                    }
+
+                    string cityDestinationName = telemetryData.JobValues.CityDestinationId;
+                    City cityDestination = MySqlConnector.Instance.GetDbContext().Cities.Where(c => c.Name == cityDestinationName).FirstOrDefault();
+                    if (cityDestination == null)
+                    {
+                        cityDestination = new City
+                        {
+                            Name = cityDestinationName,
+                            NameLocal = telemetryData.JobValues.CityDestination
+                        };
+                        MySqlConnector.Instance.GetDbContext().Cities.Add(cityDestination);
+                    }
+
+                    string companyDestinationName = telemetryData.JobValues.CompanyDestinationId;
+                    Company companyDestination = MySqlConnector.Instance.GetDbContext().Companies.Where(c => c.Name == companyDestinationName).FirstOrDefault();
+                    if (companyDestination == null)
+                    {
+                        companyDestination = new Company
+                        {
+                            Name = companyDestinationName,
+                            NameLocal = telemetryData.JobValues.CompanyDestination
+                        };
+                        MySqlConnector.Instance.GetDbContext().Companies.Add(companyDestination);
+                    }
+
+                    string companySourceName = telemetryData.JobValues.CompanySourceId;
+                    Company companySource = MySqlConnector.Instance.GetDbContext().Companies.Where(c => c.Name == companySourceName).FirstOrDefault();
+                    if (companySource == null)
+                    {
+                        companySource = new Company
+                        {
+                            Name = companySourceName,
+                            NameLocal = telemetryData.JobValues.CompanySource
+                        };
+                        MySqlConnector.Instance.GetDbContext().Companies.Add(companySource);
+                    }
+
+                    if(activeJob == null)
+                    {
+                        activeJob = new Job
+                        {
+                            Cargo = cargo,
+                            CargoMass = telemetryData.JobValues.CargoValues.Mass,
+                            CitySource = citySource,
+                            CityDestination = cityDestination,
+                            CompanyDestination = companyDestination,
+                            CompanySource = companySource,
+                            Distance = telemetryData.NavigationValues.NavigationDistance,
+                            IsActive = true,
+                            Income = telemetryData.JobValues.Income,
+                            Name = telemetryData.JobValues.CargoValues.Name,
+                            Owner = activeUser
+                        };
+
+                        MySqlConnector.Instance.GetDbContext().Jobs.Add(activeJob);
+                        MySqlConnector.Instance.GetDbContext().SaveChanges();
+                    }
+
+                    MySqlConnector.Instance.EndTransaction();
+                }
+                catch(Exception ex)
+                {
+                    log.Error("Could not create new job from SDK.", ex);
+                    MySqlConnector.Instance.RollbackTransaction();
+                }
+            }
+        }        
     }
 }
