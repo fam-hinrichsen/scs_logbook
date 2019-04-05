@@ -52,7 +52,6 @@ namespace SCS_Lookbock
             {
                 closeView(views.First().Key);
             }
-
         }
 
         public void Login()

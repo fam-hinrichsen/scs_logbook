@@ -9,13 +9,16 @@ namespace SCS_Lookbock.Objects
     {
         [Key]
         [Column("iduser")]
-        public int Id { get;set; }
+        public int Id { get; set; }
+
         [Column("username")]
-        public string Username { get;set; }
+        public string Username { get; set; }
+
         [Column("password")]
-        public string Password { get;set;}
+        public string Password { get; set; }
+
         [InverseProperty("Owner")]
-        public List<Job> Jobs { get;set;}
+        public List<Job> Jobs { get; set; }
 
         public User()
         {

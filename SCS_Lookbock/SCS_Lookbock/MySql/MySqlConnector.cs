@@ -131,7 +131,6 @@ namespace SCS_Lookbock.MySql
             return false;
         }
 
-
         public bool RollbackTransaction()
         {
             try
