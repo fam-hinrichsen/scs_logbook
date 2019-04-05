@@ -109,7 +109,6 @@
             this.MinimizeBox = false;
             this.Name = "NewUserView";
             this.Text = "New User";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewUserView_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -8,6 +8,8 @@ namespace SCS_Lookbock.View.Management.Jobmanagement
     {
         public JobListView(DbSet<Job> list, Type edit, Type add) : base(list, edit, add)
         {
+            list.Include("Owner").Load();
+            dg_Data.Columns["OwnerForeignKey"].Visible = false;
             Text = "Job";
         }
     }

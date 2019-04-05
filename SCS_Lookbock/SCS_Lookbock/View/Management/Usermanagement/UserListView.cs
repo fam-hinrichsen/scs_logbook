@@ -8,6 +8,7 @@ namespace SCS_Lookbock.View.Management.Usermanagement
     {
         public UserListView(DbSet<User> list, Type edit, Type add) : base(list, edit, add)
         {
+            dg_Data.Columns["Password"].Visible = false;
             Text = "User";
         }
     }

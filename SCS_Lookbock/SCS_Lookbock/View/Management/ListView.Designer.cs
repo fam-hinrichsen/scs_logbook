@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dg_Users = new System.Windows.Forms.DataGridView();
+            this.dg_Data = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_Users)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_Data)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dg_Users
+            // dg_Data
             // 
-            this.dg_Users.AllowUserToAddRows = false;
-            this.dg_Users.AllowUserToDeleteRows = false;
-            this.dg_Users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_Users.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dg_Users.Location = new System.Drawing.Point(0, 24);
-            this.dg_Users.MultiSelect = false;
-            this.dg_Users.Name = "dg_Users";
-            this.dg_Users.ReadOnly = true;
-            this.dg_Users.Size = new System.Drawing.Size(800, 426);
-            this.dg_Users.TabIndex = 0;
-            this.dg_Users.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_Users_CellContentDoubleClick);
+            this.dg_Data.AllowUserToAddRows = false;
+            this.dg_Data.AllowUserToDeleteRows = false;
+            this.dg_Data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_Data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dg_Data.Location = new System.Drawing.Point(0, 24);
+            this.dg_Data.MultiSelect = false;
+            this.dg_Data.Name = "dg_Data";
+            this.dg_Data.ReadOnly = true;
+            this.dg_Data.Size = new System.Drawing.Size(800, 426);
+            this.dg_Data.TabIndex = 0;
+            this.dg_Data.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_Users_CellContentDoubleClick);
             // 
             // menuStrip1
             // 
@@ -89,14 +89,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dg_Users);
+            this.Controls.Add(this.dg_Data);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimizeBox = false;
             this.Name = "ListView";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UsersView_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.dg_Users)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_Data)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -106,7 +106,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dg_Users;
+        protected System.Windows.Forms.DataGridView dg_Data;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;

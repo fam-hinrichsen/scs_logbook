@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace SCS_Lookbock.View.Management.Usermanagement
 {
-    public partial class NewUserView : Form, IAddView<User>
+    public partial class NewUserView : AddView<User>
     {
-        private Form parent;
-
         public NewUserView()
         {
             InitializeComponent();
@@ -55,19 +53,6 @@ namespace SCS_Lookbock.View.Management.Usermanagement
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Logbook.Instance.closeView(GetType());
-        }
-
-        private void NewUserView_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if(parent != null)
-            {
-                parent.Enabled = true;
-            }
-        }
-
-        public void SetParent(Form form)
-        {
-            parent = form;
         }
     }
 }

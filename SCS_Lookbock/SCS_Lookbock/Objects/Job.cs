@@ -18,6 +18,6 @@ namespace SCS_Lookbock.Objects
         [Column("owner")]
         public int OwnerForeignKey { get; set; }
         [ForeignKey("OwnerForeignKey")]
-        public User Owner { get; set;}
+        public virtual User Owner { get; set;}
     }
 }

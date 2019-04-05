@@ -19,10 +19,10 @@ namespace SCS_Lookbock.View.Management
             this.add = add;
             this.edit = edit;
             list.Load();
-            dg_Users.DataSource = list.Local.ToBindingList();
+            dg_Data.DataSource = list.Local.ToBindingList();
             //dg_Users.Columns["Password"].Visible = false;
             //dg_Users.Columns["Jobs"].Visible = false;
-            dg_Users.Refresh();
+            dg_Data.Refresh();
         }
 
         public ListView()
@@ -33,7 +33,7 @@ namespace SCS_Lookbock.View.Management
         {
             MySqlConnector.Instance.BeginTransaction();
             IEditView<T> editor = (IEditView<T>)Activator.CreateInstance(edit);
-            editor.SetEdit((T)dg_Users.Rows[e.RowIndex].DataBoundItem);
+            editor.SetEdit((T)dg_Data.Rows[e.RowIndex].DataBoundItem);
             editor.SetParent(this);
             Logbook.Instance.AddView((Form)editor);
             Enabled = false;
@@ -56,7 +56,7 @@ namespace SCS_Lookbock.View.Management
         {
             MySqlConnector.Instance.BeginTransaction();
             IEditView<T> editor = (IEditView<T>)Activator.CreateInstance(edit);
-            editor.SetEdit((T)dg_Users.Rows[dg_Users.SelectedCells[0].RowIndex].DataBoundItem);
+            editor.SetEdit((T)dg_Data.Rows[dg_Data.SelectedCells[0].RowIndex].DataBoundItem);
             editor.SetParent(this);
             Logbook.Instance.AddView((Form)editor);
             Enabled = false;
@@ -66,7 +66,7 @@ namespace SCS_Lookbock.View.Management
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MySqlConnector.Instance.BeginTransaction();
-            User user = (User)dg_Users.Rows[dg_Users.SelectedCells[0].RowIndex].DataBoundItem;
+            User user = (User)dg_Data.Rows[dg_Data.SelectedCells[0].RowIndex].DataBoundItem;
 
             DialogResult result = MessageBox.Show(
                 "Do you really want to delete user: " + user.Username,

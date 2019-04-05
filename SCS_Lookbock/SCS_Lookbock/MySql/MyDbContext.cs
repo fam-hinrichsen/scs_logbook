@@ -19,7 +19,6 @@ namespace SCS_Lookbock.MySql
         public MyDbContext(DbConnection existingConnection, bool contextOwnsConnection)
           : base(existingConnection, contextOwnsConnection)
         {
-
         }
     }
 }

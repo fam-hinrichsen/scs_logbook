@@ -21,5 +21,10 @@ namespace SCS_Lookbock.Objects
         {
             Jobs = new List<Job>();
         }
+
+        public override string ToString()
+        {
+            return Username;
+        }
     }
 }
