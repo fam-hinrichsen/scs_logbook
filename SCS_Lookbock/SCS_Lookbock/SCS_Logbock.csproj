@@ -66,6 +66,9 @@
     <Reference Include="MySql.Data.Entity.EF6, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.Entity.6.10.8\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
+    <Reference Include="SCSSdkClient">
+      <HintPath>..\..\lib\SCSSdkClient.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -91,6 +94,9 @@
     <Compile Include="MySql\MyDbContext.cs" />
     <Compile Include="Logbook.cs" />
     <Compile Include="MySql\MySqlConnector.cs" />
+    <Compile Include="Objects\Constants\Cargo.cs" />
+    <Compile Include="Objects\Constants\Company.cs" />
+    <Compile Include="Objects\Constants\City.cs" />
     <Compile Include="Objects\Job.cs" />
     <Compile Include="Objects\User.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

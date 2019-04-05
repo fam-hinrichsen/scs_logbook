@@ -25,8 +25,7 @@ namespace SCS_Lookbock.View.Management.Jobmanagement
 
         private void tb_income_TextChanged(object sender, EventArgs e)
         {
-            float tmp;
-            if (!float.TryParse(tb_income.Text, out tmp))
+            if (!float.TryParse(tb_income.Text, out float tmp))
             {
                 tb_income.BackColor = Color.Red;
             }
@@ -38,8 +37,7 @@ namespace SCS_Lookbock.View.Management.Jobmanagement
 
         private void tb_distance_TextChanged(object sender, EventArgs e)
         {
-            float tmp;
-            if (!float.TryParse(tb_distance.Text, out tmp))
+            if (!float.TryParse(tb_distance.Text, out float tmp))
             {
                 tb_distance.BackColor = Color.Red;
             }
@@ -51,16 +49,16 @@ namespace SCS_Lookbock.View.Management.Jobmanagement
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            try { 
-                float distance;
-                float income;
-                if (float.TryParse(tb_income.Text, out income) && float.TryParse(tb_distance.Text, out distance))
+            try {
+                if (float.TryParse(tb_income.Text, out float income) && float.TryParse(tb_distance.Text, out float distance))
                 {
-                    Job job = new Job();
-                    job.Name = tb_name.Text;
-                    job.Income = income;
-                    job.Distance = distance;
-                    job.Owner = (User)cb_owner.Items[cb_owner.SelectedIndex];
+                    Job job = new Job
+                    {
+                        Name = tb_name.Text,
+                        Income = income,
+                        Distance = distance,
+                        Owner = (User)cb_owner.Items[cb_owner.SelectedIndex]
+                    };
                     job.OwnerForeignKey = job.Owner.Id;
 
                     MySqlConnector.Instance.BeginTransaction();
@@ -69,7 +67,7 @@ namespace SCS_Lookbock.View.Management.Jobmanagement
                     MySqlConnector.Instance.EndTransaction();
 
                     Logbook.Instance.closeView(GetType());
-                } 
+                }
             }
             catch(Exception ex)
             {
