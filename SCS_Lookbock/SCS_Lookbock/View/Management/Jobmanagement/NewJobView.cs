@@ -1,4 +1,5 @@
-﻿using SCS_Lookbock.MySql;
+﻿using log4net;
+using SCS_Lookbock.MySql;
 using SCS_Lookbock.Objects;
 using System;
 using System.Data.Entity;
@@ -8,6 +9,8 @@ namespace SCS_Lookbock.View.Management.Jobmanagement
 {
     public partial class NewJobView : AddView<Job>
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public NewJobView()
         {
             InitializeComponent();
@@ -70,6 +73,7 @@ namespace SCS_Lookbock.View.Management.Jobmanagement
             }
             catch(Exception ex)
             {
+                log.Error("Could not create a new job.", ex);
                 MySqlConnector.Instance.RollbackTransaction();
             }
         }

@@ -1,14 +1,13 @@
-﻿using MySql.Data.MySqlClient;
+﻿using log4net;
+using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SCS_Lookbock.MySql
 {
     public sealed class MySqlConnector : IDisposable
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private static MySqlConnector instance = null;
         private static readonly object padlock = new object();
 
@@ -63,7 +62,7 @@ namespace SCS_Lookbock.MySql
             }
             catch(Exception ex)
             {
-                
+                log.Fatal("Error while connection to database.", ex);
             }
 
             return false;
@@ -94,6 +93,8 @@ namespace SCS_Lookbock.MySql
             }
             catch(Exception ex)
             {
+                log.Error("Could not begin transaction", ex);
+
                 if(transaction != null)
                 {
                     transaction.Rollback();
@@ -119,6 +120,7 @@ namespace SCS_Lookbock.MySql
             }
             catch (Exception ex)
             {
+                log.Error("Could not end transaction", ex);
                 if (transaction != null)
                 {
                     transaction.Rollback();
@@ -145,6 +147,7 @@ namespace SCS_Lookbock.MySql
             }
             catch (Exception ex)
             {
+                log.Error("Could not rollback transaction.", ex);
                 if (transaction != null)
                 {
                     transaction.Rollback();
