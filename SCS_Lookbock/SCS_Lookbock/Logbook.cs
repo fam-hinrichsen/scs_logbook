@@ -1,4 +1,5 @@
-﻿using SCS_Lookbock.MySql;
+﻿using log4net;
+using SCS_Lookbock.MySql;
 using SCS_Lookbock.Objects;
 using SCS_Lookbock.View;
 using SCS_Lookbock.View.Management.Jobmanagement;
@@ -12,6 +13,8 @@ namespace SCS_Lookbock
 {
     public class Logbook : IDisposable
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private static Logbook instance = null;
         private static readonly object padlock = new object();
 
@@ -49,7 +52,6 @@ namespace SCS_Lookbock
             {
                 closeView(views.First().Key);
             }
-
         }
 
         public void Login()
@@ -118,21 +120,21 @@ namespace SCS_Lookbock
         public bool Login(string username, string password)
         {
             try { 
-            MainView mainView = (MainView)getView(typeof(MainView));
-            Login login = (Login)getView(typeof(Login));
+                MainView mainView = (MainView)getView(typeof(MainView));
+                Login login = (Login)getView(typeof(Login));
 
-            User tmpUser = MySqlConnector.Instance.GetDbContext().Users.Where(user => user.Username.Equals(username)).First();
-            if (tmpUser.Password.Equals(password))
-            {
-                mainView.updateUser(username);
-                closeView(login.GetType());
-                activeUser = tmpUser;
-                return true;
-            }
+                User tmpUser = MySqlConnector.Instance.GetDbContext().Users.Where(user => user.Username.Equals(username)).First();
+                if (tmpUser.Password.Equals(password))
+                {
+                    mainView.updateUser(username);
+                    closeView(login.GetType());
+                    activeUser = tmpUser;
+                    return true;
+                }
             }
             catch(Exception ex)
             {
-
+                log.Error("Login failed." , ex);
             }
 
             return false;

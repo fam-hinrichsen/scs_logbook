@@ -40,7 +40,9 @@ namespace SCS_Lookbock.View
 
         private void liveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            LiveView liveView = new LiveView();
+            Logbook.Instance.AddView(liveView);
+            liveView.Show();
         }
 
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)

@@ -1,15 +1,17 @@
-﻿using SCS_Lookbock.MySql;
+﻿using log4net;
+using SCS_Lookbock.MySql;
 using SCS_Lookbock.Objects;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace SCS_Lookbock.View.Management.Usermanagement
 {
     public partial class NewUserView : AddView<User>
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public NewUserView()
         {
             InitializeComponent();
@@ -46,6 +48,7 @@ namespace SCS_Lookbock.View.Management.Usermanagement
             }
             catch(Exception ex)
             {
+                log.Error("Could not create a new user.", ex);
                 MySqlConnector.Instance.RollbackTransaction();
             }            
         }
