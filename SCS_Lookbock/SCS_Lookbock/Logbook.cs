@@ -330,7 +330,7 @@ namespace SCS_Lookbock
                         companySource = new Company
                         {
                             Name = companySourceName,
-                            NameLocal = telemetryData.JobValues.CompanyDestination
+                            NameLocal = telemetryData.JobValues.CompanySource
                         };
                         MySqlConnector.Instance.GetDbContext().Companies.Add(companySource);
                     }

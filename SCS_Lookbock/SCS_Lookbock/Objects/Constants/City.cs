@@ -15,5 +15,10 @@ namespace SCS_Lookbock.Objects.Constants
 
         [Column("nameloc")]
         public string NameLocal { get; set; }
+
+        public override string ToString()
+        {
+            return NameLocal;
+        }
     }
 }
