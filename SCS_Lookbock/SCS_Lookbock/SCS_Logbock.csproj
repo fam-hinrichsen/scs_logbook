@@ -173,6 +173,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Management\Jobmanagement\EditJobView.resx">
+      <DependentUpon>EditJobView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Management\Jobmanagement\NewJobView.resx">
       <DependentUpon>NewJobView.cs</DependentUpon>
     </EmbeddedResource>
