@@ -65,7 +65,8 @@ namespace SCS_Lookbock.View.Management
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();/*
+            throw new NotImplementedException();
+            /*
             MySqlConnector.Instance.BeginTransaction();
             T user = (T)dg_Data.Rows[dg_Data.SelectedCells[0].RowIndex].DataBoundItem;
 
