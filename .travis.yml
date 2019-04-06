@@ -1,5 +1,4 @@
 language: csharp
-mono: none
 solution: SCS_Logbook/SCS_Logbook.sln
 install:
   - nuget restore SCS_Logbook/SCS_Logbook.sln
