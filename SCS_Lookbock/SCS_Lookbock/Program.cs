@@ -25,7 +25,6 @@ namespace SCS_Logbook
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-
             log.Fatal("Unknown thread exception occured.", e.Exception);
         }
 
