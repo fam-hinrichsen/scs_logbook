@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock.View
+namespace SCS_Logbook.View
 {
     public partial class LiveView : Form
     {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SCS_Lookbock.Objects
+namespace SCS_Logbook.Objects
 {
     [Table("user")]
     public class User

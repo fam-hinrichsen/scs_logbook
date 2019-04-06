@@ -1,4 +1,4 @@
-﻿namespace SCS_Lookbock.View.Management.Usermanagement
+﻿namespace SCS_Logbook.View.Management.Usermanagement
 {
     partial class EditUserView
     {

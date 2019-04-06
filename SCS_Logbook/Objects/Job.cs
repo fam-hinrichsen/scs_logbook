@@ -1,8 +1,8 @@
-﻿using SCS_Lookbock.Objects.Constants;
+﻿using SCS_Logbook.Objects.Constants;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SCS_Lookbock.Objects
+namespace SCS_Logbook.Objects
 {
     [Table("job")]
     public class Job

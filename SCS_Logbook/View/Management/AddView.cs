@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SCS_Lookbock.View.Management
+namespace SCS_Logbook.View.Management
 {
     public class AddView<T> : Form, IAddView<T>
     {

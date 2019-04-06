@@ -2,7 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 
-namespace SCS_Lookbock.MySql
+namespace SCS_Logbook.MySql
 {
     public sealed class MySqlConnector : IDisposable
     {
@@ -33,7 +33,7 @@ namespace SCS_Lookbock.MySql
 
         public MySqlConnector()
         {
-            string connectionString = "server=localhost;port=3306;database=scs_logbook;uid=scs_logbook;password=test";
+            string connectionString = "server=Florian;port=3306;database=scs_logbook;uid=scs_logbook;password=test";
             connection = new MySqlConnection(connectionString);
             Logbook.Instance.UpdateDbConnectionState(connection.State.ToString());
             connection.StateChange += Connection_StateChange;

@@ -1,10 +1,10 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
 using MySql.Data.Entity;
-using SCS_Lookbock.Objects;
-using SCS_Lookbock.Objects.Constants;
+using SCS_Logbook.Objects;
+using SCS_Logbook.Objects.Constants;
 
-namespace SCS_Lookbock.MySql
+namespace SCS_Logbook.MySql
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class MyDbContext : DbContext

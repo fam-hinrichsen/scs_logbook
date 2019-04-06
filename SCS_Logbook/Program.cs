@@ -1,9 +1,9 @@
 ﻿using log4net;
-using SCS_Lookbock.View;
+using SCS_Logbook.View;
 using System;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock
+namespace SCS_Logbook
 {
     static class Program
     {
@@ -16,9 +16,21 @@ namespace SCS_Lookbock
         static void Main()
         {
             log.Info("Application started");
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            Application.ThreadException += Application_ThreadException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainView());
+        }
+
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            log.Fatal("Unknown thread exception occured.", e.Exception);
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            log.Fatal("Unknown exception occured.", (Exception)e.ExceptionObject);
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using SCS_Lookbock.MySql;
-using SCS_Lookbock.Objects;
+﻿using SCS_Logbook.MySql;
+using SCS_Logbook.Objects;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock.View.Management.Usermanagement
+namespace SCS_Logbook.View.Management.Usermanagement
 {
     public partial class EditUserView : EditView<User>
     {

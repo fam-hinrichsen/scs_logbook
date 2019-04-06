@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SCS_Lookbock.Objects.Constants
+namespace SCS_Logbook.Objects.Constants
 {
     [Table("city")]
     public class City
