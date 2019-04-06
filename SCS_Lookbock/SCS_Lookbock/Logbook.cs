@@ -219,11 +219,14 @@ namespace SCS_Lookbock
         {
             try
             {
-                telemetry.Data -= Telemetry_Data;
-                telemetry.JobFinished -= Telemetry_JobFinished;
-                telemetry.JobStarted -= Telemetry_JobStarted;
-                telemetry.Dispose();
-                telemetry = null;
+                if (telemetry != null) {
+                    telemetry.Data -= Telemetry_Data;
+                    telemetry.JobFinished -= Telemetry_JobFinished;
+                    telemetry.JobStarted -= Telemetry_JobStarted;
+                    telemetry.Dispose();
+                    telemetry = null;
+                }
+
                 return true;
             }
             catch (Exception ex)
