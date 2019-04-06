@@ -1,6 +1,6 @@
 language: csharp
-solution: SCS_Logbook/SCS_Logbook.sln
+solution: SCS_Logbook.sln
 install:
-  - nuget restore SCS_Logbook/SCS_Logbook.sln
+  - nuget restore SCS_Logbook.sln
 script:
-  - msbuild /p:Configuration=Release SCS_Logbook\SCS_Logbock.sln
+  - msbuild /p:Configuration=Release SCS_Logbock.sln
