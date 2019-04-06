@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCS_Logbook", "SCS_Logbook\SCS_Logbook.csproj", "{BF69D108-9C26-4398-A612-B9F64F2E52B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF69D108-9C26-4398-A612-B9F64F2E52B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF69D108-9C26-4398-A612-B9F64F2E52B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF69D108-9C26-4398-A612-B9F64F2E52B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF69D108-9C26-4398-A612-B9F64F2E52B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCED9171-37D6-4E4D-B8B6-83E240BD5BA0}
+	EndGlobalSection
+EndGlobal
