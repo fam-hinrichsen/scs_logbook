@@ -194,6 +194,9 @@
     <Compile Include="View\Management\Usermanagement\UserListView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="View\LiveView.resx">
+      <DependentUpon>LiveView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

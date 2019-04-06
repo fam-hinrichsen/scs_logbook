@@ -99,6 +99,19 @@ namespace SCS_Logbook
             newUser.Show();
         }
 
+        public void OpenLiveView()
+        {
+            LiveView liveView = (LiveView)getView(typeof(LiveView));
+
+            if (liveView == null)
+            {
+                liveView = new LiveView();
+                AddView(liveView);
+            }
+
+            liveView.Show();
+        }
+
         public void ListUser()
         {
             UserListView users = (UserListView)getView(typeof(UserListView));
@@ -248,6 +261,12 @@ namespace SCS_Logbook
                     activeJob.Distance = data.NavigationValues.NavigationDistance;
                     MySqlConnector.Instance.GetDbContext().SaveChanges();
                     MySqlConnector.Instance.EndTransaction();
+                }
+
+                LiveView live = (LiveView)getView(typeof(LiveView));
+                if(live != null)
+                {
+                    live.Update(telemetryData);
                 }
             }
         }

@@ -40,9 +40,7 @@ namespace SCS_Logbook.View
 
         private void liveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LiveView liveView = new LiveView();
-            Logbook.Instance.AddView(liveView);
-            liveView.Show();
+            Logbook.Instance.OpenLiveView();
         }
 
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)
