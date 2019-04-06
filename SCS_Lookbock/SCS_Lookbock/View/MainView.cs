@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock.View
+namespace SCS_Logbook.View
 {
     public partial class MainView : Form
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BF69D108-9C26-4398-A612-B9F64F2E52B1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SCS_Lookbock</RootNamespace>
-    <AssemblyName>SCS_Lookbock</AssemblyName>
+    <RootNamespace>SCS_Logbook</RootNamespace>
+    <AssemblyName>SCS_Logbook</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>SCS_Lookbock.Program</StartupObject>
+    <StartupObject>SCS_Logbook.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -66,10 +66,28 @@
     <Reference Include="MySql.Data.Entity.EF6, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.Entity.6.10.8\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SCSSdkClient">
       <HintPath>..\..\lib\SCSSdkClient.dll</HintPath>
     </Reference>
+    <Reference Include="Sentry, Version=1.1.2.0, Culture=neutral, PublicKeyToken=fba2ec45388e2af0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sentry.1.1.2\lib\net461\Sentry.dll</HintPath>
+    </Reference>
+    <Reference Include="Sentry.Log4Net, Version=1.1.2.0, Culture=neutral, PublicKeyToken=fba2ec45388e2af0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sentry.Log4Net.1.1.2\lib\netstandard2.0\Sentry.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Sentry.PlatformAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fba2ec45388e2af0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sentry.PlatformAbstractions.1.0.0\lib\net45\Sentry.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sentry.Protocol, Version=1.0.3.0, Culture=neutral, PublicKeyToken=fba2ec45388e2af0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sentry.Protocol.1.0.3\lib\net46\Sentry.Protocol.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -77,6 +95,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
@@ -91,6 +114,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="log4net\Sentry\Constants.cs" />
+    <Compile Include="log4net\Sentry\SentryAppender.cs" />
+    <Compile Include="log4net\Sentry\LevelMapping.cs" />
     <Compile Include="MySql\MyDbContext.cs" />
     <Compile Include="Logbook.cs" />
     <Compile Include="MySql\MySqlConnector.cs" />

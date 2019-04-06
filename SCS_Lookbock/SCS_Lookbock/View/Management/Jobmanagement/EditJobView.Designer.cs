@@ -1,4 +1,4 @@
-﻿namespace SCS_Lookbock.View.Management.Jobmanagement
+﻿namespace SCS_Logbook.View.Management.Jobmanagement
 {
     partial class EditJobView
     {

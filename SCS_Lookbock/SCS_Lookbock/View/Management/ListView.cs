@@ -1,10 +1,9 @@
-﻿using SCS_Lookbock.MySql;
-using SCS_Lookbock.Objects;
+﻿using SCS_Logbook.MySql;
 using System;
 using System.Data.Entity;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock.View.Management
+namespace SCS_Logbook.View.Management
 {
     public partial class ListView<T> : Form where T : class
     {

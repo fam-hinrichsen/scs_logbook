@@ -1,4 +1,4 @@
-﻿namespace SCS_Lookbock.View
+﻿namespace SCS_Logbook.View
 {
     partial class Login
     {

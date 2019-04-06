@@ -1,4 +1,4 @@
-﻿namespace SCS_Lookbock.View.Management
+﻿namespace SCS_Logbook.View.Management
 {
     partial class ListView<T>
     {

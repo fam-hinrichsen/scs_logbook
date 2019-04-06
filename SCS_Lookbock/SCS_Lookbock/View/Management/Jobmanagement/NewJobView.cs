@@ -1,11 +1,11 @@
 ﻿using log4net;
-using SCS_Lookbock.MySql;
-using SCS_Lookbock.Objects;
+using SCS_Logbook.MySql;
+using SCS_Logbook.Objects;
 using System;
 using System.Data.Entity;
 using System.Drawing;
 
-namespace SCS_Lookbock.View.Management.Jobmanagement
+namespace SCS_Logbook.View.Management.Jobmanagement
 {
     public partial class NewJobView : AddView<Job>
     {

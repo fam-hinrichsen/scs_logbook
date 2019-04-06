@@ -1,8 +1,8 @@
-﻿using SCS_Lookbock.Objects;
+﻿using SCS_Logbook.Objects;
 using System;
 using System.Data.Entity;
 
-namespace SCS_Lookbock.View.Management.Usermanagement
+namespace SCS_Logbook.View.Management.Usermanagement
 {
     public class UserListView : ListView<User>
     {

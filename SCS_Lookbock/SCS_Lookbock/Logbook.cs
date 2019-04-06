@@ -1,10 +1,10 @@
 ﻿using log4net;
-using SCS_Lookbock.MySql;
-using SCS_Lookbock.Objects;
-using SCS_Lookbock.Objects.Constants;
-using SCS_Lookbock.View;
-using SCS_Lookbock.View.Management.Jobmanagement;
-using SCS_Lookbock.View.Management.Usermanagement;
+using SCS_Logbook.MySql;
+using SCS_Logbook.Objects;
+using SCS_Logbook.Objects.Constants;
+using SCS_Logbook.View;
+using SCS_Logbook.View.Management.Jobmanagement;
+using SCS_Logbook.View.Management.Usermanagement;
 using SCSSdkClient;
 using SCSSdkClient.Object;
 using System;
@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock
+namespace SCS_Logbook
 {
     public class Logbook : IDisposable
     {

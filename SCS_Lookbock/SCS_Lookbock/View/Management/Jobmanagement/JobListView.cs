@@ -1,8 +1,8 @@
-﻿using SCS_Lookbock.Objects;
+﻿using SCS_Logbook.Objects;
 using System;
 using System.Data.Entity;
 
-namespace SCS_Lookbock.View.Management.Jobmanagement
+namespace SCS_Logbook.View.Management.Jobmanagement
 {
     class JobListView : ListView<Job>
     {

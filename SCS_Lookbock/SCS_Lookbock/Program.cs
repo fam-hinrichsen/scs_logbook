@@ -1,9 +1,9 @@
 ﻿using log4net;
-using SCS_Lookbock.View;
+using SCS_Logbook.View;
 using System;
 using System.Windows.Forms;
 
-namespace SCS_Lookbock
+namespace SCS_Logbook
 {
     static class Program
     {
