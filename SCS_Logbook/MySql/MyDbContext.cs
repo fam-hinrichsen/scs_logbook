@@ -24,5 +24,13 @@ namespace SCS_Logbook.MySql
           : base(existingConnection, contextOwnsConnection)
         {
         }
+
+        public void RefreshAll()
+        {
+            foreach (var entity in ChangeTracker.Entries())
+            {
+                entity.Reload();
+            }
+        }
     }
 }

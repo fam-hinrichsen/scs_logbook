@@ -93,5 +93,11 @@ namespace SCS_Logbook.View.Management
             Enabled = false;
             ((Form)adder).Show();
         }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MySqlConnector.Instance.GetDbContext().RefreshAll();
+            dg_Data.Refresh();
+        }
     }
 }
