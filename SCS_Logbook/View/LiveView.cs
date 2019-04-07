@@ -34,7 +34,6 @@ namespace SCS_Logbook.View
                 telemetryData = telemetry;
                 Monitor.Exit(telemetryDataLock);
             }
-
         }
 
         private void Updater()
