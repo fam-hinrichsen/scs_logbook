@@ -117,6 +117,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ModifyProgressBarColor.cs" />
     <Compile Include="MySql\MyDbContext.cs" />
     <Compile Include="Logbook.cs" />
     <Compile Include="MySql\MySqlConnector.cs" />
