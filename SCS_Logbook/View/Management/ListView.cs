@@ -1,4 +1,5 @@
-﻿using SCS_Logbook.MySql;
+﻿using log4net;
+using SCS_Logbook.MySql;
 using System;
 using System.Data.Entity;
 using System.Windows.Forms;
@@ -7,6 +8,8 @@ namespace SCS_Logbook.View.Management
 {
     public partial class ListView<T> : Form where T : class
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private bool closing;
         private Type add;
         private Type edit;
@@ -19,8 +22,6 @@ namespace SCS_Logbook.View.Management
             this.edit = edit;
             list.Load();
             dg_Data.DataSource = list.Local.ToBindingList();
-            //dg_Users.Columns["Password"].Visible = false;
-            //dg_Users.Columns["Jobs"].Visible = false;
             dg_Data.Refresh();
         }
 
@@ -63,26 +64,29 @@ namespace SCS_Logbook.View.Management
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-            /*
-            MySqlConnector.Instance.BeginTransaction();
-            T user = (T)dg_Data.Rows[dg_Data.SelectedCells[0].RowIndex].DataBoundItem;
+        {            
+            T entity = (T)dg_Data.Rows[dg_Data.SelectedCells[0].RowIndex].DataBoundItem;
 
             DialogResult result = MessageBox.Show(
-                "Do you really want to delete object: " + T.ToString(),
+                "Do you really want to delete object: " + entity.ToString(),
                 "Question",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes) {
-                MySqlConnector.Instance.GetDbContext().Users.Remove(T);
-                MySqlConnector.Instance.GetDbContext().SaveChanges();
-                MySqlConnector.Instance.EndTransaction();
+                try
+                {
+                    MySqlConnector.Instance.BeginTransaction();
+                    MySqlConnector.Instance.GetDbContext().Entry(entity).State = EntityState.Deleted;
+                    MySqlConnector.Instance.GetDbContext().SaveChanges();
+                    MySqlConnector.Instance.EndTransaction();
+                }
+                catch(Exception ex)
+                {
+                    log.Error("Could not delete object.", ex);
+                    MySqlConnector.Instance.RollbackTransaction();
+                }
             }
-            else
-            {
-                MySqlConnector.Instance.RollbackTransaction();
-            }*/
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
