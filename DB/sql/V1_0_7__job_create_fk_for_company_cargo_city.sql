@@ -1,26 +1,16 @@
 ALTER TABLE `scs_logbook`.`city` 
-ADD UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE;
+ADD CONSTRAINT `name_UNIQUE` UNIQUE (`name`);
 ;
 
 ALTER TABLE `scs_logbook`.`cargo` 
-ADD UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE;
+ADD CONSTRAINT `name_UNIQUE` UNIQUE (`name`);
 ;
 
 ALTER TABLE `scs_logbook`.`company` 
-ADD UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE;
+ADD CONSTRAINT `name_UNIQUE` UNIQUE (`name`);
 ;
 
 
-ALTER TABLE `scs_logbook`.`job` 
-ADD INDEX `fk_city_destination_idx` (`citydestinationid` ASC) VISIBLE,
-ADD INDEX `fk_city_source_idx` (`citysourceid` ASC) VISIBLE,
-ADD INDEX `fk_cargo_idx` (`cargoid` ASC) VISIBLE,
-ADD INDEX `fk_company_source_idx` ( `companysourceid` ASC) VISIBLE,
-ADD INDEX `fk_company_destination_idx` (`companydestinationid` ASC) VISIBLE;
-;
-
-ALTER TABLE `scs_logbook`.`job` 
-;
 ALTER TABLE `scs_logbook`.`job` 
 ADD CONSTRAINT `fk_city_source`
   FOREIGN KEY (`citysourceid`)

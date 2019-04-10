@@ -34,7 +34,7 @@ namespace SCS_Logbook.MySql
 
         public MySqlConnector()
         {
-            string connectionString = "server=localhost;port=3306;database=scs_logbook;uid=scs_logbook;password=test";
+            string connectionString = "server=fam-hinrichsen.de;port=3306;database=scs_logbook;uid=scs;password=aBxpvpZFyjk5K5jV2odf";
             connection = new MySqlConnection(connectionString);
             Logbook.Instance.UpdateDbConnectionState(connection.State.ToString());
             connection.StateChange += Connection_StateChange;
