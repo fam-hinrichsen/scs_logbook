@@ -160,7 +160,6 @@ namespace SCS_Logbook.Log4net.Appender
 
         private static Dictionary<string, string> GetLoggingEventPropertiesString(LoggingEvent loggingEvent)
         {
-
             Dictionary<string, string> retval = new Dictionary<string, string>();
             var properties = loggingEvent.GetProperties();
             if (properties == null)
