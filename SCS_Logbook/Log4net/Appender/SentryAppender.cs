@@ -1,7 +1,6 @@
 ﻿using log4net.Appender;
 using log4net.Core;
 using Sentry;
-using Sentry.Extensibility;
 using Sentry.Protocol;
 using Sentry.Reflection;
 using System;
@@ -84,7 +83,7 @@ namespace SCS_Logbook.Log4net.Appender
                     loggingEvent.RenderedMessage, 
                     loggingEvent.LoggerName, 
                     null,
-                    GetLoggingEventPropertiesString(loggingEvent), 
+                    GetLoggingEventExtraInformationString(loggingEvent), 
                     loggingEvent.ToBreadcrumbLevel());
             }
         }
@@ -158,13 +157,22 @@ namespace SCS_Logbook.Log4net.Appender
             }
         }
 
-        private static Dictionary<string, string> GetLoggingEventPropertiesString(LoggingEvent loggingEvent)
+        private static Dictionary<string, string> GetLoggingEventExtraInformationString(LoggingEvent loggingEvent)
         {
             Dictionary<string, string> retval = new Dictionary<string, string>();
+
+            AddPropertiesDict(loggingEvent, ref retval);
+            AddLocationInformationDict(loggingEvent, ref retval);
+
+            return retval;
+        }
+        
+        private static void AddLocationInformationDict(LoggingEvent loggingEvent, ref Dictionary<string, string> retval)
+        {
             var properties = loggingEvent.GetProperties();
             if (properties == null)
             {
-                return retval;
+                return;
             }
 
             foreach (var key in properties.GetKeys())
@@ -180,47 +188,29 @@ namespace SCS_Logbook.Log4net.Appender
                     }
                 }
             }
+        }
 
-            var locInfo = loggingEvent.LocationInformation;
-            if (locInfo != null)
+        private static void AddPropertiesDict(LoggingEvent loggingEvent, ref Dictionary<string, string> retval)
+        {
+            var properties = loggingEvent.GetProperties();
+            if (properties == null)
             {
-                if (!string.IsNullOrEmpty(locInfo.ClassName))
-                {
-                    retval.Add(nameof(locInfo.ClassName), locInfo.ClassName);
-                }
-
-                if (!string.IsNullOrEmpty(locInfo.FileName))
-                {
-                    retval.Add(nameof(locInfo.FileName), locInfo.FileName);
-                }
-
-                if (int.TryParse(locInfo.LineNumber, out var lineNumber) && lineNumber != 0)
-                {
-                    retval.Add(nameof(locInfo.LineNumber), lineNumber.ToString());
-                }
-
-                if (!string.IsNullOrEmpty(locInfo.MethodName))
-                {
-                    retval.Add(nameof(locInfo.MethodName), locInfo.MethodName);
-                }
+                return;
             }
 
-            if (!string.IsNullOrEmpty(loggingEvent.ThreadName))
+            foreach (var key in properties.GetKeys())
             {
-                retval.Add(nameof(loggingEvent.ThreadName), loggingEvent.ThreadName);
+                if (!string.IsNullOrWhiteSpace(key)
+                    && !key.StartsWith("log4net:", StringComparison.OrdinalIgnoreCase))
+                {
+                    var value = properties[key];
+                    if (value != null
+                        && (!(value is string stringValue) || !string.IsNullOrWhiteSpace(stringValue)))
+                    {
+                        retval.Add(key, value as string);
+                    }
+                }
             }
-
-            if (!string.IsNullOrEmpty(loggingEvent.Domain))
-            {
-                retval.Add(nameof(loggingEvent.Domain), loggingEvent.Domain);
-            }
-
-            if (loggingEvent.Level != null)
-            {
-                retval.Add("log4net-level", loggingEvent.Level.Name);
-            }
-
-            return retval;
         }
     }
 }
