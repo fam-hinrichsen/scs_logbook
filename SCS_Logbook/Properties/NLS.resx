@@ -117,12 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
-    <comment>ok</comment>
-  </data>
   <data name="NLS0001" xml:space="preserve">
-    <value></value>
-    <comment>OK value</comment>
+    <value>OK</value>
+  </data>
+  <data name="NLS0002" xml:space="preserve">
+    <value>Cancel</value>
   </data>
 </root>

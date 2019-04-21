@@ -68,5 +68,14 @@ namespace SCS_Logbook.Properties {
                 return ResourceManager.GetString("NLS0001", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
+        /// </summary>
+        internal static string NLS0002 {
+            get {
+                return ResourceManager.GetString("NLS0002", resourceCulture);
+            }
+        }
     }
 }
