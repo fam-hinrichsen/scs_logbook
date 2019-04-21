@@ -164,28 +164,47 @@ namespace SCS_Logbook.Log4net.Appender
             AddPropertiesDict(loggingEvent, ref retval);
             AddLocationInformationDict(loggingEvent, ref retval);
 
+            if (!string.IsNullOrEmpty(loggingEvent.ThreadName))
+            {
+                retval.Add(nameof(loggingEvent.ThreadName), loggingEvent.ThreadName);
+            }
+
+            if (!string.IsNullOrEmpty(loggingEvent.Domain))
+            {
+                retval.Add(nameof(loggingEvent.Domain), loggingEvent.Domain);
+            }
+
+            if (loggingEvent.Level != null)
+            {
+                retval.Add("log4net-level", loggingEvent.Level.Name);
+            }
+
             return retval;
         }
         
         private static void AddLocationInformationDict(LoggingEvent loggingEvent, ref Dictionary<string, string> retval)
         {
-            var properties = loggingEvent.GetProperties();
-            if (properties == null)
+            var locInfo = loggingEvent.LocationInformation;
+            if (locInfo != null)
             {
-                return;
-            }
-
-            foreach (var key in properties.GetKeys())
-            {
-                if (!string.IsNullOrWhiteSpace(key)
-                    && !key.StartsWith("log4net:", StringComparison.OrdinalIgnoreCase))
+                if (!string.IsNullOrEmpty(locInfo.ClassName))
                 {
-                    var value = properties[key];
-                    if (value != null
-                        && (!(value is string stringValue) || !string.IsNullOrWhiteSpace(stringValue)))
-                    {
-                        retval.Add(key, value as string);
-                    }
+                    retval.Add(nameof(locInfo.ClassName), locInfo.ClassName);
+                }
+
+                if (!string.IsNullOrEmpty(locInfo.FileName))
+                {
+                    retval.Add(nameof(locInfo.FileName), locInfo.FileName);
+                }
+
+                if (int.TryParse(locInfo.LineNumber, out var lineNumber) && lineNumber != 0)
+                {
+                    retval.Add(nameof(locInfo.LineNumber), lineNumber.ToString());
+                }
+
+                if (!string.IsNullOrEmpty(locInfo.MethodName))
+                {
+                    retval.Add(nameof(locInfo.MethodName), locInfo.MethodName);
                 }
             }
         }
