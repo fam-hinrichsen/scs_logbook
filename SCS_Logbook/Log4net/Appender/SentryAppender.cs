@@ -153,29 +153,6 @@ namespace SCS_Logbook.Log4net.Appender
                 }
             }
         }
-        
-        private static IEnumerable<KeyValuePair<string, object>> GetLoggingEventProperties(LoggingEvent loggingEvent)
-        {
-            var properties = loggingEvent.GetProperties();
-            if (properties == null)
-            {
-                yield break;
-            }
-
-            foreach (var key in properties.GetKeys())
-            {
-                if (!string.IsNullOrWhiteSpace(key)
-                    && !key.StartsWith("log4net:", StringComparison.OrdinalIgnoreCase))
-                {
-                    var value = properties[key];
-                    if (value != null
-                        && (!(value is string stringValue) || !string.IsNullOrWhiteSpace(stringValue)))
-                    {
-                        yield return new KeyValuePair<string, object>(key, value);
-                    }
-                }
-            }
-        }
 
         private static void AddPropertiesDict(LoggingEvent loggingEvent, ref Dictionary<string, string> retval)
         {
