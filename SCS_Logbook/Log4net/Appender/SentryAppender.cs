@@ -60,7 +60,7 @@ namespace SCS_Logbook.Log4net.Appender
                     sentryEvent.Message = loggingEvent.RenderedMessage;
                 }
 
-                sentryEvent.SetExtras(GetLoggingEventProperties(loggingEvent));
+                sentryEvent.SetExtras(GetLoggingEventInformation(loggingEvent));
 
                 if (SendIdentity && !string.IsNullOrEmpty(loggingEvent.Identity))
                 {
@@ -83,7 +83,7 @@ namespace SCS_Logbook.Log4net.Appender
                     loggingEvent.RenderedMessage, 
                     loggingEvent.LoggerName, 
                     null,
-                    GetLoggingEventExtraInformationString(loggingEvent), 
+                    GetLoggingEventExtraInformation(loggingEvent), 
                     loggingEvent.ToBreadcrumbLevel());
             }
         }
@@ -95,69 +95,14 @@ namespace SCS_Logbook.Log4net.Appender
             sdkHandle?.Dispose();
         }
 
-        private static IEnumerable<KeyValuePair<string, object>> GetLoggingEventProperties(LoggingEvent loggingEvent)
+        private static IEnumerable<KeyValuePair<string, object>> GetLoggingEventInformation(LoggingEvent loggingEvent)
         {
-            var properties = loggingEvent.GetProperties();
-            if (properties == null)
-            {
-                yield break;
-            }
-
-            foreach (var key in properties.GetKeys())
-            {
-                if (!string.IsNullOrWhiteSpace(key)
-                    && !key.StartsWith("log4net:", StringComparison.OrdinalIgnoreCase))
-                {
-                    var value = properties[key];
-                    if (value != null
-                        && (!(value is string stringValue) || !string.IsNullOrWhiteSpace(stringValue)))
-                    {
-                        yield return new KeyValuePair<string, object>(key, value);
-                    }
-                }
-            }
-
-            var locInfo = loggingEvent.LocationInformation;
-            if (locInfo != null)
-            {
-                if (!string.IsNullOrEmpty(locInfo.ClassName))
-                {
-                    yield return new KeyValuePair<string, object>(nameof(locInfo.ClassName), locInfo.ClassName);
-                }
-
-                if (!string.IsNullOrEmpty(locInfo.FileName))
-                {
-                    yield return new KeyValuePair<string, object>(nameof(locInfo.FileName), locInfo.FileName);
-                }
-
-                if (int.TryParse(locInfo.LineNumber, out var lineNumber) && lineNumber != 0)
-                {
-                    yield return new KeyValuePair<string, object>(nameof(locInfo.LineNumber), lineNumber);
-                }
-
-                if (!string.IsNullOrEmpty(locInfo.MethodName))
-                {
-                    yield return new KeyValuePair<string, object>(nameof(locInfo.MethodName), locInfo.MethodName);
-                }
-            }
-
-            if (!string.IsNullOrEmpty(loggingEvent.ThreadName))
-            {
-                yield return new KeyValuePair<string, object>(nameof(loggingEvent.ThreadName), loggingEvent.ThreadName);
-            }
-
-            if (!string.IsNullOrEmpty(loggingEvent.Domain))
-            {
-                yield return new KeyValuePair<string, object>(nameof(loggingEvent.Domain), loggingEvent.Domain);
-            }
-
-            if (loggingEvent.Level != null)
-            {
-                yield return new KeyValuePair<string, object>("log4net-level", loggingEvent.Level.Name);
+            foreach (KeyValuePair<string, string> keyValuePair in GetLoggingEventExtraInformation(loggingEvent)) { 
+                yield return new KeyValuePair<string, object>(keyValuePair.Key,keyValuePair.Value);
             }
         }
 
-        private static Dictionary<string, string> GetLoggingEventExtraInformationString(LoggingEvent loggingEvent)
+        private static Dictionary<string, string> GetLoggingEventExtraInformation(LoggingEvent loggingEvent)
         {
             Dictionary<string, string> retval = new Dictionary<string, string>();
 
@@ -205,6 +150,29 @@ namespace SCS_Logbook.Log4net.Appender
                 if (!string.IsNullOrEmpty(locInfo.MethodName))
                 {
                     retval.Add(nameof(locInfo.MethodName), locInfo.MethodName);
+                }
+            }
+        }
+        
+        private static IEnumerable<KeyValuePair<string, object>> GetLoggingEventProperties(LoggingEvent loggingEvent)
+        {
+            var properties = loggingEvent.GetProperties();
+            if (properties == null)
+            {
+                yield break;
+            }
+
+            foreach (var key in properties.GetKeys())
+            {
+                if (!string.IsNullOrWhiteSpace(key)
+                    && !key.StartsWith("log4net:", StringComparison.OrdinalIgnoreCase))
+                {
+                    var value = properties[key];
+                    if (value != null
+                        && (!(value is string stringValue) || !string.IsNullOrWhiteSpace(stringValue)))
+                    {
+                        yield return new KeyValuePair<string, object>(key, value);
+                    }
                 }
             }
         }
