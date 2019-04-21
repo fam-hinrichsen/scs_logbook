@@ -219,13 +219,10 @@ namespace SCS_Logbook.Log4net.Appender
 
             foreach (string key in properties.GetKeys())
             {
-                if (checkKey(key))
+                var value = properties[key];
+                if (checkKey(key) && checkValue(value))
                 {
-                    var value = properties[key];
-                    if (checkValue(value))
-                    {
-                        retval.Add(key, value as string);
-                    }
+                    retval.Add(key, value as string);
                 }
             }
         }
