@@ -217,19 +217,27 @@ namespace SCS_Logbook.Log4net.Appender
                 return;
             }
 
-            foreach (var key in properties.GetKeys())
+            foreach (string key in properties.GetKeys())
             {
-                if (!string.IsNullOrWhiteSpace(key)
-                    && !key.StartsWith("log4net:", StringComparison.OrdinalIgnoreCase))
+                if (checkKey(key))
                 {
                     var value = properties[key];
-                    if (value != null
-                        && (!(value is string stringValue) || !string.IsNullOrWhiteSpace(stringValue)))
+                    if (checkValue(value))
                     {
                         retval.Add(key, value as string);
                     }
                 }
             }
+        }
+
+        private static bool checkKey(string key)
+        {
+            return !string.IsNullOrWhiteSpace(key) && !key.StartsWith("log4net:", StringComparison.OrdinalIgnoreCase);
+        }
+        
+        private static bool checkValue(object value)
+        {
+            return value != null && (!(value is string stringValue) || !string.IsNullOrWhiteSpace(stringValue));
         }
     }
 }
