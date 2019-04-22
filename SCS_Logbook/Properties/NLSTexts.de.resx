@@ -129,10 +129,40 @@
   <data name="dlg_login_title" xml:space="preserve">
     <value>Anmelden</value>
   </data>
+  <data name="dlg_main_title" xml:space="preserve">
+    <value>Logbuch</value>
+  </data>
   <data name="lbl_password" xml:space="preserve">
     <value>Passwort:</value>
   </data>
   <data name="lbl_username" xml:space="preserve">
     <value>Benutzername:</value>
+  </data>
+  <data name="tsm_file" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="tsm_file_close" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="tsm_file_login" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  <data name="tsm_file_logout" xml:space="preserve">
+    <value>Abmelden</value>
+  </data>
+  <data name="tsm_management" xml:space="preserve">
+    <value>Verwaltung</value>
+  </data>
+  <data name="tsm_management_job" xml:space="preserve">
+    <value>Job</value>
+  </data>
+  <data name="tsm_management_user" xml:space="preserve">
+    <value>Benutzer</value>
+  </data>
+  <data name="tsm_view" xml:space="preserve">
+    <value>Ansicht</value>
+  </data>
+  <data name="tsm_view_live" xml:space="preserve">
+    <value>Live</value>
   </data>
 </root>
