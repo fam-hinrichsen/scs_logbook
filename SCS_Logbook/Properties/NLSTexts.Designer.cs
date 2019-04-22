@@ -86,5 +86,32 @@ namespace SCS_Logbook.Properties {
                 return ResourceManager.GetString("button_ok", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Login ähnelt.
+        /// </summary>
+        internal static string dlg_login_title {
+            get {
+                return ResourceManager.GetString("dlg_login_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Password: ähnelt.
+        /// </summary>
+        internal static string lbl_password {
+            get {
+                return ResourceManager.GetString("lbl_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Username: ähnelt.
+        /// </summary>
+        internal static string lbl_username {
+            get {
+                return ResourceManager.GetString("lbl_username", resourceCulture);
+            }
+        }
     }
 }

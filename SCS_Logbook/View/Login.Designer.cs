@@ -43,16 +43,16 @@
             this.lbl_user.Name = "lbl_user";
             this.lbl_user.Size = new System.Drawing.Size(32, 13);
             this.lbl_user.TabIndex = 0;
-            this.lbl_user.Text = "User:";
+            this.lbl_user.Text = Properties.NLSTexts.lbl_username;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 35);
-            this.label1.Name = "label1";
+            this.label1.Name = "lbl_pass";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Password:";
+            this.label1.Text = Properties.NLSTexts.lbl_password;
             // 
             // tb_user
             // 
