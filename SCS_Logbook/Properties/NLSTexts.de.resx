@@ -120,10 +120,19 @@
   <data name="button_cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="button_login" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
   <data name="button_ok" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="button_login" xml:space="preserve">
+  <data name="dlg_login_title" xml:space="preserve">
     <value>Anmelden</value>
+  </data>
+  <data name="lbl_password" xml:space="preserve">
+    <value>Passwort:</value>
+  </data>
+  <data name="lbl_username" xml:space="preserve">
+    <value>Benutzername:</value>
   </data>
 </root>
