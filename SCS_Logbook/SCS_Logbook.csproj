@@ -13,6 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,7 +29,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -116,6 +116,11 @@
     <Compile Include="MySql\MyDbContext.cs" />
     <Compile Include="Logbook.cs" />
     <Compile Include="MySql\MySqlConnector.cs" />
+    <Compile Include="Properties\NLSTexts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NLSTexts.resx</DependentUpon>
+    </Compile>
     <Compile Include="Objects\Constants\Cargo.cs" />
     <Compile Include="Objects\Constants\Company.cs" />
     <Compile Include="Objects\Constants\City.cs" />
@@ -190,6 +195,11 @@
     <Compile Include="View\Management\Usermanagement\UserListView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="Properties\NLSTexts.de.resx" />
+    <EmbeddedResource Include="Properties\NLSTexts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NLSTexts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
