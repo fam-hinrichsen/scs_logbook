@@ -97,6 +97,15 @@ namespace SCS_Logbook.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Logbook ähnelt.
+        /// </summary>
+        internal static string dlg_main_title {
+            get {
+                return ResourceManager.GetString("dlg_main_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Password: ähnelt.
         /// </summary>
         internal static string lbl_password {
@@ -111,6 +120,87 @@ namespace SCS_Logbook.Properties {
         internal static string lbl_username {
             get {
                 return ResourceManager.GetString("lbl_username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die File ähnelt.
+        /// </summary>
+        internal static string tsm_file {
+            get {
+                return ResourceManager.GetString("tsm_file", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Close ähnelt.
+        /// </summary>
+        internal static string tsm_file_close {
+            get {
+                return ResourceManager.GetString("tsm_file_close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Login ähnelt.
+        /// </summary>
+        internal static string tsm_file_login {
+            get {
+                return ResourceManager.GetString("tsm_file_login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Logout ähnelt.
+        /// </summary>
+        internal static string tsm_file_logout {
+            get {
+                return ResourceManager.GetString("tsm_file_logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Management ähnelt.
+        /// </summary>
+        internal static string tsm_management {
+            get {
+                return ResourceManager.GetString("tsm_management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Job ähnelt.
+        /// </summary>
+        internal static string tsm_management_job {
+            get {
+                return ResourceManager.GetString("tsm_management_job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die User ähnelt.
+        /// </summary>
+        internal static string tsm_management_user {
+            get {
+                return ResourceManager.GetString("tsm_management_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die View ähnelt.
+        /// </summary>
+        internal static string tsm_view {
+            get {
+                return ResourceManager.GetString("tsm_view", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Live ähnelt.
+        /// </summary>
+        internal static string tsm_view_live {
+            get {
+                return ResourceManager.GetString("tsm_view_live", resourceCulture);
             }
         }
     }

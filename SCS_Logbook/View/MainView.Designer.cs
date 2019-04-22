@@ -91,20 +91,20 @@
             this.closeToolStripMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
             this.dateiToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.dateiToolStripMenuItem.Text = "File";
+            this.dateiToolStripMenuItem.Text = Properties.NLSTexts.tsm_file;
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
             this.loginToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.loginToolStripMenuItem.Text = "Login";
+            this.loginToolStripMenuItem.Text = Properties.NLSTexts.tsm_file_login;
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Text = Properties.NLSTexts.tsm_file_logout;
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -117,7 +117,7 @@
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Text = Properties.NLSTexts.tsm_file_close;
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
@@ -126,13 +126,13 @@
             this.liveToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Text = Properties.NLSTexts.tsm_view;
             // 
             // liveToolStripMenuItem
             // 
             this.liveToolStripMenuItem.Name = "liveToolStripMenuItem";
             this.liveToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
-            this.liveToolStripMenuItem.Text = "Live";
+            this.liveToolStripMenuItem.Text = Properties.NLSTexts.tsm_view_live;
             this.liveToolStripMenuItem.Click += new System.EventHandler(this.liveToolStripMenuItem_Click);
             // 
             // usermanagementToolStripMenuItem
@@ -142,20 +142,20 @@
             this.jobToolStripMenuItem});
             this.usermanagementToolStripMenuItem.Name = "usermanagementToolStripMenuItem";
             this.usermanagementToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.usermanagementToolStripMenuItem.Text = "Management";
+            this.usermanagementToolStripMenuItem.Text = Properties.NLSTexts.tsm_management;
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.userToolStripMenuItem.Text = "User";
+            this.userToolStripMenuItem.Text = Properties.NLSTexts.tsm_management_user;
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // jobToolStripMenuItem
             // 
             this.jobToolStripMenuItem.Name = "jobToolStripMenuItem";
             this.jobToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.jobToolStripMenuItem.Text = "Job";
+            this.jobToolStripMenuItem.Text = Properties.NLSTexts.tsm_management_job;
             this.jobToolStripMenuItem.Click += new System.EventHandler(this.jobToolStripMenuItem_Click);
             // 
             // MainView
@@ -168,7 +168,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainView";
-            this.Text = "Lookbock";
+            this.Text = Properties.NLSTexts.dlg_main_title;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
