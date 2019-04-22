@@ -33,7 +33,6 @@ namespace SCS_Logbook.Log4net.Appender
                 sdkHandle = SentrySdk.Init(o =>
                 {
                     o.Dsn = new Dsn(Dsn);
-                    o.Debug = true;
                     o.Environment = "dev";
                     o.SendDefaultPii = true;
                 });
