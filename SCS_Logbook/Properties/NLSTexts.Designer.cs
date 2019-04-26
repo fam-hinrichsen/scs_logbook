@@ -70,6 +70,15 @@ namespace SCS_Logbook.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create ähnelt.
+        /// </summary>
+        internal static string button_create {
+            get {
+                return ResourceManager.GetString("button_create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Login ähnelt.
         /// </summary>
         internal static string button_login {
@@ -84,6 +93,15 @@ namespace SCS_Logbook.Properties {
         internal static string button_ok {
             get {
                 return ResourceManager.GetString("button_ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
+        /// </summary>
+        internal static string button_save {
+            get {
+                return ResourceManager.GetString("button_save", resourceCulture);
             }
         }
         

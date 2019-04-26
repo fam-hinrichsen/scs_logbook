@@ -120,11 +120,17 @@
   <data name="button_cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="button_create" xml:space="preserve">
+    <value>Create</value>
+  </data>
   <data name="button_login" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="button_ok" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="button_save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="dlg_live_title" xml:space="preserve">
     <value>Live</value>

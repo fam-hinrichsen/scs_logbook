@@ -76,7 +76,7 @@
             this.btn_create.Name = "btn_create";
             this.btn_create.Size = new System.Drawing.Size(75, 23);
             this.btn_create.TabIndex = 4;
-            this.btn_create.Text = "Create";
+            this.btn_create.Text = Properties.NLSTexts.button_create;
             this.btn_create.UseVisualStyleBackColor = true;
             this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
             // 
@@ -87,7 +87,7 @@
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 5;
-            this.btn_cancel.Text = "Cancel";
+            this.btn_cancel.Text = Properties.NLSTexts.button_cancel;
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
