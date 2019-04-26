@@ -101,7 +101,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_user);
             this.Name = "Login";
-            this.Text = "Login";
+            this.Text = Properties.NLSTexts.dlg_login_title;
             this.ResumeLayout(false);
             this.PerformLayout();
 

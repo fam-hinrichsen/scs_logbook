@@ -88,6 +88,15 @@ namespace SCS_Logbook.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Live ähnelt.
+        /// </summary>
+        internal static string dlg_live_title {
+            get {
+                return ResourceManager.GetString("dlg_live_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Login ähnelt.
         /// </summary>
         internal static string dlg_login_title {
@@ -169,11 +178,47 @@ namespace SCS_Logbook.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add ähnelt.
+        /// </summary>
+        internal static string tsm_management_add {
+            get {
+                return ResourceManager.GetString("tsm_management_add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete ähnelt.
+        /// </summary>
+        internal static string tsm_management_delete {
+            get {
+                return ResourceManager.GetString("tsm_management_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edit ähnelt.
+        /// </summary>
+        internal static string tsm_management_edit {
+            get {
+                return ResourceManager.GetString("tsm_management_edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Job ähnelt.
         /// </summary>
         internal static string tsm_management_job {
             get {
                 return ResourceManager.GetString("tsm_management_job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Refresh ähnelt.
+        /// </summary>
+        internal static string tsm_management_refresh {
+            get {
+                return ResourceManager.GetString("tsm_management_refresh", resourceCulture);
             }
         }
         
