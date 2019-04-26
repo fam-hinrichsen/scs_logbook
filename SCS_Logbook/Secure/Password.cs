@@ -5,7 +5,6 @@ namespace SCS_Logbook.Secure
 {
     public class Password
     {
-
         public string Salt { get; private set; }
 
         public string PasswordHash { get; private set;  }
@@ -50,8 +49,8 @@ namespace SCS_Logbook.Secure
             return hash;
         }
 
-        private static string getHexString(byte[] hash) { 
-            
+        private static string getHexString(byte[] hash)
+        { 
             // Create a new Stringbuilder to collect the bytes
             // and create a string.
             StringBuilder sBuilder = new StringBuilder();
