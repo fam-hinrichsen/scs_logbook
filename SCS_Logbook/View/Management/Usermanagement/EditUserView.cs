@@ -1,15 +1,17 @@
 ﻿using SCS_Logbook.MySql;
 using SCS_Logbook.Objects;
+using SCS_Logbook.Secure;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace SCS_Logbook.View.Management.Usermanagement
 {
     public partial class EditUserView : EditView<User>
     {
+        bool passwordChanged = false;
+
         public EditUserView()
         {
             InitializeComponent();
@@ -18,7 +20,14 @@ namespace SCS_Logbook.View.Management.Usermanagement
         private void button1_Click(object sender, EventArgs e)
         {
             toEdit.Username = tb_username.Text;
-            toEdit.Password = tb_password.Text;
+
+            if (passwordChanged)
+            {
+                Password password = Password.HashPassword(tb_password.Text);
+                toEdit.Password = password.PasswordHash;
+                toEdit.Salt = password.Salt;
+            }
+
             MySqlConnector.Instance.GetDbContext().SaveChanges();
             MySqlConnector.Instance.EndTransaction();
             Logbook.Instance.closeView(GetType());
@@ -51,6 +60,11 @@ namespace SCS_Logbook.View.Management.Usermanagement
             tb_id.Text = toEdit.Id.ToString();
             tb_username.Text = toEdit.Username;
             tb_password.Text = toEdit.Password;
+        }
+
+        private void tb_password_TextChanged(object sender, EventArgs e)
+        {
+            passwordChanged = true;
         }
     }
 }

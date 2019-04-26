@@ -126,6 +126,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Secure\Password.cs" />
     <Compile Include="View\LiveView.cs">
       <SubType>Form</SubType>
     </Compile>
