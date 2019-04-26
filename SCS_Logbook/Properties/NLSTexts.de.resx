@@ -120,11 +120,20 @@
   <data name="button_cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="button_create" xml:space="preserve">
+    <value>Anlegen</value>
+  </data>
   <data name="button_login" xml:space="preserve">
     <value>Anmelden</value>
   </data>
   <data name="button_ok" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="button_save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="dlg_live_title" xml:space="preserve">
+    <value>Live</value>
   </data>
   <data name="dlg_login_title" xml:space="preserve">
     <value>Anmelden</value>
@@ -153,8 +162,20 @@
   <data name="tsm_management" xml:space="preserve">
     <value>Verwaltung</value>
   </data>
+  <data name="tsm_management_add" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="tsm_management_delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="tsm_management_edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
   <data name="tsm_management_job" xml:space="preserve">
     <value>Job</value>
+  </data>
+  <data name="tsm_management_refresh" xml:space="preserve">
+    <value>Neu laden</value>
   </data>
   <data name="tsm_management_user" xml:space="preserve">
     <value>Benutzer</value>
