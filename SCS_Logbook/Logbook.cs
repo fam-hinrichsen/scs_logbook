@@ -2,6 +2,7 @@
 using SCS_Logbook.MySql;
 using SCS_Logbook.Objects;
 using SCS_Logbook.Objects.Constants;
+using SCS_Logbook.Secure;
 using SCS_Logbook.View;
 using SCS_Logbook.View.Management.Jobmanagement;
 using SCS_Logbook.View.Management.Usermanagement;
@@ -132,7 +133,7 @@ namespace SCS_Logbook
                 Login login = (Login)getView(typeof(Login));
 
                 User tmpUser = MySqlConnector.Instance.GetDbContext().Users.Where(user => user.Username.Equals(username)).First();
-                if (tmpUser.Password.Equals(password))
+                if (tmpUser.GetPassword().VerifyPassword(password))
                 {
                     mainView.updateUser(username);
                     closeView(login.GetType());

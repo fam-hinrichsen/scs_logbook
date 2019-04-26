@@ -1,0 +1,2 @@
+ALTER TABLE `scs_logbook`.`user` 
+ADD COLUMN `salt` VARCHAR(255) NOT NULL AFTER `password`;

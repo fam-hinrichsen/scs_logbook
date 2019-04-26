@@ -88,6 +88,7 @@
             this.tb_password.PasswordChar = 'X';
             this.tb_password.Size = new System.Drawing.Size(100, 20);
             this.tb_password.TabIndex = 5;
+            this.tb_password.TextChanged += new System.EventHandler(this.tb_password_TextChanged);
             // 
             // btn_save
             // 
@@ -101,6 +102,7 @@
             // 
             // btn_cancel
             // 
+            this.btn_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_cancel.Location = new System.Drawing.Point(101, 84);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);

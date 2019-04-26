@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SCS_Logbook.Secure;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,6 +18,9 @@ namespace SCS_Logbook.Objects
         [Column("password")]
         public string Password { get; set; }
 
+        [Column("salt")]
+        public string Salt { get; set; }
+
         [InverseProperty("Owner")]
         public List<Job> Jobs { get; set; }
 
@@ -28,6 +32,11 @@ namespace SCS_Logbook.Objects
         public override string ToString()
         {
             return Username;
+        }
+
+        public Password GetPassword()
+        {
+            return new Password(Salt, Password);
         }
     }
 }
