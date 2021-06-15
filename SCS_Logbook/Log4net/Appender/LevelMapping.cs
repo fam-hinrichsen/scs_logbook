@@ -1,9 +1,10 @@
 using log4net.Core;
-using Sentry.Protocol;
 
 namespace SCS_Logbook.Log4net.Appender
 {
-    internal static class LevelMapping
+  using Sentry;
+
+  internal static class LevelMapping
     {
         public static SentryLevel? ToSentryLevel(this LoggingEvent loggingLevel)
         {
