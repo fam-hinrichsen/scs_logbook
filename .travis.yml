@@ -4,7 +4,7 @@ install:
   - nuget restore SCS_Logbook.sln
 script:
   - msbuild /p:Configuration=Release SCS_Logbook/SCS_Logbook.csproj
-  
+
 deploy:
   provider: script
   script: bash DB/flyway migrate
