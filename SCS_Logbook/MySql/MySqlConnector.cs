@@ -1,6 +1,7 @@
 ﻿using log4net;
 using MySql.Data.MySqlClient;
 using System;
+using System.Data.Entity;
 
 namespace SCS_Logbook.MySql
 {
@@ -13,7 +14,7 @@ namespace SCS_Logbook.MySql
 
         private readonly MySqlConnection connection;
         private MyDbContext dbContext = null;
-        private MySqlTransaction transaction = null;
+        private DbContextTransaction transaction = null;
 
         public static MySqlConnector Instance
         {
@@ -33,7 +34,7 @@ namespace SCS_Logbook.MySql
 
         public MySqlConnector()
         {
-            string connectionString = "server=Florian;port=3306;database=scs_logbook;uid=scs_logbook;password=test";
+            string connectionString = "server=fam-hinrichsen.de;port=3306;database=scs_logbook;uid=scs;password=aBxpvpZFyjk5K5jV2odf";
             connection = new MySqlConnection(connectionString);
             Logbook.Instance.UpdateDbConnectionState(connection.State.ToString());
             connection.StateChange += Connection_StateChange;
@@ -87,8 +88,7 @@ namespace SCS_Logbook.MySql
                     return false;
                 }
 
-                transaction = connection.BeginTransaction();
-                dbContext.Database.UseTransaction(transaction);
+                transaction = dbContext.Database.BeginTransaction();
                 return true;
             }
             catch(Exception ex)
@@ -115,6 +115,7 @@ namespace SCS_Logbook.MySql
                 }
 
                 transaction.Commit();
+                transaction.Dispose();
                 transaction = null;
                 return true;
             }
