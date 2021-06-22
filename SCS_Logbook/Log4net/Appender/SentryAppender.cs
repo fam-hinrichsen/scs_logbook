@@ -1,16 +1,17 @@
 ﻿using log4net.Appender;
 using log4net.Core;
 using Sentry;
-using Sentry.Protocol;
 using Sentry.Reflection;
 using System;
 using System.Collections.Generic;
 
 namespace SCS_Logbook.Log4net.Appender
 {
-    public class SentryAppender : AppenderSkeleton
+  using SdkVersion = Sentry.SdkVersion;
+
+  public class SentryAppender : AppenderSkeleton
     {
-        internal static readonly (string Name, string Version) NameAndVersion
+        internal static readonly SdkVersion NameAndVersion
             = typeof(SentryAppender).Assembly.GetNameAndVersion();
 
         private static readonly string ProtocolPackageName = "nuget:" + NameAndVersion.Name;
@@ -32,7 +33,7 @@ namespace SCS_Logbook.Log4net.Appender
             {
                 sdkHandle = SentrySdk.Init(o =>
                 {
-                    o.Dsn = new Dsn(Dsn);
+                    o.Dsn = Dsn;
                     o.Environment = "dev";
                     o.SendDefaultPii = true;
                 });
@@ -44,16 +45,9 @@ namespace SCS_Logbook.Log4net.Appender
                 SentryEvent sentryEvent = new SentryEvent(exception)
                 {
                     Logger = loggingEvent.LoggerName,
-                    Level = loggingEvent.ToSentryLevel()/*,
-                    Sdk =
-                    {
-                        Version = NameAndVersion.Version,
-                        Name = "SCS_Logbook.Log4net.Appender.SentryAppender",
-                    }*/
+                    Level = loggingEvent.ToSentryLevel()
                 };
-                /*
-                sentryEvent.Sdk.AddPackage(ProtocolPackageName, NameAndVersion.Version);
-                */
+
                 if (!string.IsNullOrWhiteSpace(loggingEvent.RenderedMessage))
                 {
                     sentryEvent.Message = loggingEvent.RenderedMessage;
@@ -78,12 +72,7 @@ namespace SCS_Logbook.Log4net.Appender
             }
             else
             {
-                SentrySdk.AddBreadcrumb(
-                    loggingEvent.RenderedMessage, 
-                    loggingEvent.LoggerName, 
-                    null,
-                    GetLoggingEventExtraInformation(loggingEvent), 
-                    loggingEvent.ToBreadcrumbLevel());
+              SentrySdk.AddBreadcrumb(loggingEvent.RenderedMessage,loggingEvent.LoggerName,null,GetLoggingEventExtraInformation(loggingEvent),loggingEvent.ToBreadcrumbLevel());
             }
         }
 
@@ -101,7 +90,7 @@ namespace SCS_Logbook.Log4net.Appender
             }
         }
 
-        private static Dictionary<string, string> GetLoggingEventExtraInformation(LoggingEvent loggingEvent)
+        private static IDictionary<string, string> GetLoggingEventExtraInformation(LoggingEvent loggingEvent)
         {
             Dictionary<string, string> retval = new Dictionary<string, string>();
 
